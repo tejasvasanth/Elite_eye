@@ -1,0 +1,468 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gotham Font Family */
+/* Note: Gotham is a premium font that requires licensing. */
+/* In a production environment, you would need to purchase and host the font files. */
+/* The following is a placeholder for when you have the licensed font files: */
+/*
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* For now, we're using Montserrat from Google Fonts as a fallback */
+
+/* Photo Background Option */
+.photo-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('/background-image.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1; /* Adjust opacity as needed */
+}
+
+/* Abstract Art Background (Alternative) */
+.abstract-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(22, 82, 41, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(203, 93, 33, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 50% 10%, rgba(22, 82, 41, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 10% 50%, rgba(203, 93, 33, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 90% 50%, rgba(22, 82, 41, 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 50% 90%, rgba(203, 93, 33, 0.15) 0%, transparent 30%),
+    linear-gradient(45deg, transparent 40%, rgba(22, 82, 41, 0.1) 50%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(203, 93, 33, 0.1) 50%, transparent 60%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 300px 300px, 300px 300px;
+  animation: abstract-float 25s ease-in-out infinite;
+}
+
+@keyframes abstract-float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg);
+    background-position: 0% 0%, 100% 100%, 50% 50%, 50% 50%, 0% 0%, 100% 100%, 0% 0%, 100% 100%;
+  }
+  25% { 
+    transform: translate(-15px, -8px) rotate(1.5deg);
+    background-position: 15% 15%, 85% 85%, 65% 35%, 35% 65%, 15% 15%, 85% 85%, 100px 100px, 200px 200px;
+  }
+  50% { 
+    transform: translate(8px, -15px) rotate(-1.5deg);
+    background-position: 30% 30%, 70% 70%, 80% 20%, 20% 80%, 30% 30%, 70% 70%, 200px 200px, 100px 100px;
+  }
+  75% { 
+    transform: translate(-8px, 8px) rotate(0.8deg);
+    background-position: 20% 20%, 80% 80%, 70% 30%, 30% 70%, 20% 20%, 80% 80%, 150px 150px, 250px 250px;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes buildLetters {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(203, 93, 33, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(203, 93, 33, 0.6); }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Background Patterns */
+.grid-lines {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.network-pattern {
+  background-image: radial-gradient(circle at 25% 25%, rgba(203, 93, 33, 0.2) 2px, transparent 2px),
+                    radial-gradient(circle at 75% 75%, rgba(203, 93, 33, 0.2) 2px, transparent 2px);
+  background-size: 100px 100px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.flowchart-pattern {
+  background-image: 
+    linear-gradient(45deg, rgba(203, 93, 33, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(203, 93, 33, 0.1) 25%, transparent 25%);
+  background-size: 60px 60px;
+  animation: float 12s ease-in-out infinite;
+}
+
+.radiant-pattern {
+  background: radial-gradient(circle at 50% 50%, rgba(203, 93, 33, 0.3) 0%, transparent 70%);
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.stable-pattern {
+  background-image: 
+    linear-gradient(30deg, rgba(255,255,255,0.05) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.05) 87.5%, rgba(255,255,255,0.05)),
+    linear-gradient(150deg, rgba(255,255,255,0.05) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.05) 87.5%, rgba(255,255,255,0.05));
+  background-size: 80px 80px;
+}
+
+/* Text Effects */
+.shimmer-text {
+  background: linear-gradient(90deg, #ffffff 0%, #cb5d21 50%, #ffffff 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.insight-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.insight-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(203, 93, 33, 0.2), transparent);
+  border-radius: 4px;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Component Styles */
+.floating-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(203, 93, 33, 0.6);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.scroll-indicator {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(transparent, #cb5d21, transparent);
+  position: relative;
+  animation: float 2s ease-in-out infinite;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #cb5d21;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.glow-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.glow-button:hover::before {
+  left: 100%;
+}
+
+/* Service Cards */
+.service-card {
+  perspective: 1000px;
+}
+
+.service-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.service-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(10deg);
+}
+
+/* Flow Step Animations */
+.flow-step {
+  position: relative;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #cb5d21, #e67e22);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 4px 20px rgba(203, 93, 33, 0.3);
+}
+
+.flow-icon-container {
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  background: rgba(203, 93, 33, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(203, 93, 33, 0.3);
+  transition: all 0.3s ease;
+}
+
+.flow-step:hover .flow-icon-container {
+  background: rgba(203, 93, 33, 0.2);
+  border-color: #cb5d21;
+  transform: scale(1.1);
+}
+
+.arrow-line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, #cb5d21, transparent);
+  margin: 1rem auto;
+  position: relative;
+}
+
+.arrow-line::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -3px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 8px solid #cb5d21;
+}
+
+/* Elevation Cards */
+.elevation-card {
+  position: relative;
+}
+
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(203, 93, 33, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+.elevation-card:hover .glow-card::before {
+  opacity: 1;
+}
+
+.elevation-icon-container {
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 50%;
+  background: rgba(203, 93, 33, 0.1);
+  transition: all 0.3s ease;
+}
+
+.elevation-icon-container.alignment::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cb5d21;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: bounce-in 1s ease-out 0.5s forwards;
+}
+
+.elevation-icon-container.ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(203, 93, 33, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 2s ease-out infinite;
+}
+
+.elevation-icon-container.growth::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, #cb5d21, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: buildLetters 1s ease-out 0.5s forwards;
+}
+
+/* CTA Pulse */
+.pulse-cta {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shimmer-text {
+    background-size: 400% 100%;
+  }
+  
+  .floating-particle {
+    display: none;
+  }
+  
+  .grid-lines,
+  .network-pattern,
+  .flowchart-pattern {
+    background-size: 30px 30px;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.service-card,
+.flow-step,
+.elevation-card {
+  will-change: transform, opacity;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.loaded {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
